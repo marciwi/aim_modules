@@ -21,11 +21,13 @@
  */
 
 #include <PictureDisplayModule.h>
+#include "CImg.h"
 
 namespace rur {
 
 class PictureDisplayModuleExt: public PictureDisplayModule {
 public:
+	PictureDisplayModuleExt();
 	// The tick function will be called from the PictureDisplayModuleMain file
 	void Tick();
 

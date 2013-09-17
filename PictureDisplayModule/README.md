@@ -19,7 +19,7 @@
 
 ## What does it do?
 
-The PictureDisplayModule ...
+The PictureDisplayModule listens to its incoming port, accepts any picture that is sent to it and displays the image
 
 ## How fast is it?
 
@@ -28,6 +28,8 @@ The PictureDisplayModule ...
 ## How to install?
 
 Follow the instructions on [AIM website](http://dobots.github.com/aim-bzr/). 
+(raspberry pi requires installing imagemagick)
+* sudo apt-get install imagemagick
 
 ## Where can I read more?
 

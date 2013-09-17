@@ -24,6 +24,10 @@
 
 using namespace rur;
 
+PictureDisplayModuleExt::PictureDisplayModuleExt(){
+
+}
+
 //! Replace with your own functionality
 void PictureDisplayModuleExt::Tick() {
 
