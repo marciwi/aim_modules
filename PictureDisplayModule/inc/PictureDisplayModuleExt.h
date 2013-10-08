@@ -19,15 +19,29 @@
  * @company Almende B.V.
  * @case    Artificial Intelligence Framework
  */
+#include <iostream>
+#include <fstream>
 
 #include <PictureDisplayModule.h>
 #include "CImg.h"
 
 namespace rur {
 
-class PictureDisplayModuleExt: public PictureDisplayModule {
+class PictureDisplayModuleExt: public PictureDisplayModule{
+	// unsigned char might be replaced by the correct type for the transferred image
+	cimg_library::CImg<unsigned char> image;
+	cimg_library::CImgDisplay display;
 public:
 	PictureDisplayModuleExt();
+	// simple function to fully construct the image
+	void assignImage();
+
+	// simple function to show the image
+	void showImage();
+
+	// read the port and save any image to "tmp.jpg"
+	void readPort();
+
 	// The tick function will be called from the PictureDisplayModuleMain file
 	void Tick();
 

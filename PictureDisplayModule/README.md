@@ -29,7 +29,7 @@ The PictureDisplayModule ...
 
 Follow the instructions on [AIM website](http://dobots.github.com/aim-bzr/). 
 (raspberry pi requires installing imagemagick)
-* sudo apt-get install imagemagick
+	sudo apt-get install imagemagick
 
 ## Where can I read more?
 

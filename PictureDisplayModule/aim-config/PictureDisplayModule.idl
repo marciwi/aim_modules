@@ -24,20 +24,15 @@ struct Param {
   long parameter;
 };
 
-// Typedef for array of integers
-typedef sequence<long> long_seq;
+// Typedef for array of chars
+typedef sequence<char> char_seq;
 
 // The public interface of PictureDisplayModule
 interface PictureDisplayModule {
 
-  // Input from microphone in the form of an array
-  void Audio(in long_seq input);
-
-  // Input from infrared sensor
-  void Infrared(in long sensor_l);
-
-  // A command to one of the wheels
-  void LeftWheel(out long output);
+  //Input Image from another Module
+  //void Image(in string input);
+	void Image(in char_seq input);
 
 };
 

@@ -18,35 +18,32 @@
 #include "PictureDisplayModule.h"
 
 namespace rur {
+using namespace yarp::os;
 
 PictureDisplayModule::PictureDisplayModule():
   cliParam(0)
 {
-  const char* const channel[3] = {"readAudio", "readInfrared", "writeLeftWheel"};
+  const char* const channel[1] = {"readImage"};
   cliParam = new Param();
-  dummyAudio = long_seq(0);
-  dummyInfrared = int(0);
+  portImage = new BufferedPort<Bottle>();
 }
 
 PictureDisplayModule::~PictureDisplayModule() {
   delete cliParam;
+  delete portImage;
 }
 
 void PictureDisplayModule::Init(std::string & name) {
   cliParam->module_id = name;
   
+  std::stringstream yarpPortName;
+  yarpPortName.str(""); yarpPortName.clear();
+  yarpPortName << "/picturedisplaymodule" << name << "/image";
+  portImage->open(yarpPortName.str().c_str());
+  
 }
 
-long_seq* PictureDisplayModule::readAudio(bool blocking) {
-  return &dummyAudio;
-}
-
-int* PictureDisplayModule::readInfrared(bool blocking) {
-  return &dummyInfrared;
-}
-
-bool PictureDisplayModule::writeLeftWheel(const int output) {
-  return true;
-}
-
-} // namespace
+char_seq* PictureDisplayModule::readImage(bool blocking) {
+  Bottle *b = portImage->read(blocking);
+  if (b != NULL) {
+    for (int i = 0; i < b->size(); ++i) {

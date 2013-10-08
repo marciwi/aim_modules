@@ -22,6 +22,10 @@
 #include <vector>
 #include <string>
 #include <vector>
+#include <sstream>
+#include <yarp/os/BufferedPort.h>
+#include <yarp/os/Network.h>
+#include <yarp/os/Bottle.h>
 
 namespace rur {
 
@@ -30,17 +34,22 @@ struct Param {
   int parameter;
 };
 
-typedef std::vector<int> long_seq;
+typedef std::vector<char> char_seq;
 
 class PictureDisplayModule {
 private:
   Param *cliParam;
   
-  long_seq dummyAudio;
-  int dummyInfrared;
+  yarp::os::Network yarp;
+  char_seq portImageBuf;
+  yarp::os::BufferedPort<yarp::os::Bottle> *portImage;
 protected:
-  static const int channel_count = 3;
-  const char* channel[3];
+  static const int channel_count = 1;
+  const char* channel[1];
+  // Read from this function and assume it means something
+  // Remark: caller is responsible for evoking vector->clear()
+  char_seq *readImage(bool blocking=false);
+  
 public:
   PictureDisplayModule();
   
@@ -57,17 +66,6 @@ public:
   
   // Overwrite this function with your own code
   bool Stop() { return false; }
-  
-  // Read from this function and assume it means something
-  // Remark: caller is responsible for evoking vector->clear()
-  long_seq *readAudio(bool blocking=false);
-  
-  // Read from this function and assume it means something
-  // Remark: check if result is not NULL
-  int *readInfrared(bool blocking=false);
-  
-  // Write to this function and assume it ends up at some receiving module
-  bool writeLeftWheel(const int output);
   
 };
 } // End of namespace

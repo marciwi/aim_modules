@@ -25,16 +25,47 @@
 using namespace rur;
 
 PictureDisplayModuleExt::PictureDisplayModuleExt(){
+	this->assignImage();
+	this->showImage();
+}
 
+void PictureDisplayModuleExt::assignImage(){
+	std::ifstream check("temp.jpg");
+	if (check.is_open()){
+		check.close();
+		image.clear();
+		image.assign("temp.jpg");
+	}
+	else{
+		check.close();
+	}
+}
+
+void PictureDisplayModuleExt::showImage(){
+	display.assign(image);
+}
+
+void PictureDisplayModuleExt::readPort(){
+	std::vector<char> * vect = readImage();
+	std::string temp(vect->begin(),vect->end());
+	if(!temp.empty()){
+		// save image
+		std::ofstream out("temp.jpg", std::ios::binary);
+		out << temp; //assign image to output file
+		out.close();
+	}
 }
 
 //! Replace with your own functionality
 void PictureDisplayModuleExt::Tick() {
-
+	if(!display.is_closed()){
+		display.wait();
+	}
 }
 
 //! Replace with your own functionality
 bool PictureDisplayModuleExt::Stop() {
 	return false;
+//	return display.is_closed();	//will not work properly if display is shown belated
 }
 
