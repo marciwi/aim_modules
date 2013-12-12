@@ -1,0 +1,27 @@
+{
+	"name":"Morse2TxtModule",
+	"type":"background",
+	"category":"Miscellaneous",
+	"description":"Converts morse code to a string of text",
+	"supported_middleware":[ "android", "yarp", "zeromq", "ros" ],
+	"supported_devices":[ "android", "raspberrypi", "ubuntu" ],
+	"enable":"true",
+	"android": {
+		"package":"org.dobots.morse2txtmodule",
+		"url":"https://play.google.com/store/apps/details?id=org.dobots.morse2txtmodule"
+	},
+	"ports": [
+		{
+			"name":"txt",
+			"dir":"out",
+			"type":"std::string",
+			"middleware":"default"
+		},
+		{
+			"name":"morse",
+			"dir":"in",
+			"type":"std::string",
+			"middleware":"default"
+		}
+	]
+}
