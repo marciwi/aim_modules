@@ -25,7 +25,8 @@ private:
 	std::string mMorseMessage;
 	unsigned int mPause;		// time between dit's & dah's (usleep)
 
-	uint8_t hw_addr;
+//	uint8_t hw_addr;			// determined by jumpers JP1 and JP2, default is 0
+	int hw_addr;
 
 public:
 	//! The constructor

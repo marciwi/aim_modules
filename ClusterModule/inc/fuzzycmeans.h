@@ -35,8 +35,7 @@
 #include <algorithm>
 
 /**
- * The k-means algorithm, also called Lloyd's algorithm. A generalization is the Linde-Buzo-Gray algorithm for vector
- * quantization, see https://en.wikipedia.org/wiki/Linde%E2%80%93Buzo%E2%80%93Gray_algorithm
+ * https://sites.google.com/site/dataclusteringalgorithms/fuzzy-c-means-clustering-algorithm
  */
 class FuzzyCMeans {
 public:
@@ -74,9 +73,6 @@ public:
 	~FuzzyCMeans() {}
 
 	void tick() {
-//		for (int k = 0; k < data_set.size(); ++k) {
-//			clear(k);
-//		}
 		for (int i = 0; i < data_set.size(); ++i) {
 			calc_membership(i);
 		}
@@ -109,16 +105,12 @@ public:
 	}
 
 	void evaluate() {
-
 		std::vector<value_t>::iterator elements;
 		for (int s=0;s<data_set.size();s++){
 			calc_membership(s);
 			elements = std::max_element(memberships[s].mu.begin(),memberships[s].mu.end());
 			labels[s].prediction = std::distance(memberships[s].mu.begin(),elements);
 		}
-
-//		std::cout << labels[3].ground_truth << std::endl;
-
 
 		size_t a, b, c, d; a = b = c = d = 0;
 		for (int i = 0; i < data_set.size(); ++i) {
@@ -183,11 +175,6 @@ protected:
 		numerator /= denominator;
 		clusters[j].center = numerator;
 	}
-
-//	// delete all data references in clusters
-//	void clear(int k) {
-//		memberships[k].mu.clear();
-//	}
 
 private:
 	std::vector<Cluster> clusters;

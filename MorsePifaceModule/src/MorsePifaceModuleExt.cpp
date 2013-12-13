@@ -45,6 +45,7 @@ void MorsePifaceModuleExt::Tick() {
 		//blink those lights yo!!
 	}
     // Write to output
+//	pifacedigital_write
     pifacedigital_write_reg(0x00, OUTPUT, hw_addr);
     sleep(1);
     pifacedigital_write_reg(0xaa, OUTPUT, hw_addr);

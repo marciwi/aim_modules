@@ -160,17 +160,16 @@ void Morse2TxtModuleExt::Tick() {
 		// split the sentence in individual words
 		const std::string wordDelimeter = "0000000";
 		words = split(copy,wordDelimeter);
-		std::cout << "there are " << words.size() << " words" << std::endl;
+//		std::cout << "there are " << words.size() << " words" << std::endl;
 		//split the words into letters & translate
 		const std::string letterDelimeter = "000";
 		for(unsigned i=0;i<words.size();++i){
 			letters.clear();
 			letters = split(words[i],letterDelimeter);
-			std::cout << "word: " << i << " has " << letters.size() << " letters" << std::endl;
+//			std::cout << "word: " << i << " has " << letters.size() << " letters" << std::endl;
 			for(unsigned j=0;j<letters.size();++j){
-				std::cout << "letter " << j << " is " << letters[j] << " and has length " << letters[j].size() <<
-						" this is converted to: " << convertSingleCharacter(letters[j]) << std::endl;
-
+//				std::cout << "letter " << j << " is " << letters[j] << " and has length " << letters[j].size() <<
+//						" this is converted to: " << convertSingleCharacter(letters[j]) << std::endl;
 				message.append(convertSingleCharacter(letters[j]));
 			}
 			message.append(" ");

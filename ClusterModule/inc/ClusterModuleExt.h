@@ -26,7 +26,7 @@
 #include <fstream>
 
 #include <fuzzycmeans.h>
-
+#include <CTime.h>
 #include <data.hpp>
 
 namespace rur {
@@ -56,6 +56,8 @@ private:
 	bool stop;
 
 	int predefined_clusters;
+
+	long time_begin_ms;
 };
 
 }

@@ -27,16 +27,15 @@ The ClusterModule ...
 
 ## How to install?
 
-Follow the instructions on [AIM website](http://dobots.github.com/aim-bzr/). 
+Follow the instructions on [AIM website](http://dobots.github.com/aim/). 
 
 ## Where can I read more?
 
-* [AIM website](http://dobots.github.com/aim-bzr/) 
+* [AIM website](http://dobots.github.com/aim/) 
 
 ## Copyrights
 The copyrights of this module (2013) belong to:
 
-- Author: Your Name
-- Your company or institute
-- Your address
+- Author: Marc Hulscher
+- DO bots
 

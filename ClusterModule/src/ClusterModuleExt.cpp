@@ -27,22 +27,32 @@ using namespace rur;
 enum DataSet { D_ABALONE, D_GAUSSIAN, D_IRIS, NUMBER_OF_DATASETS };
 
 ClusterModuleExt::ClusterModuleExt(){
+	time_begin_ms = get_cur_1ms();
 	std::ifstream f;
 	DataSet dataset;
 	dataset = D_ABALONE;
+//	dataset = D_IRIS;
+//	dataset = D_GAUSSIAN;
 	std::string file = "";
+
+
 	switch(dataset){
 	case D_ABALONE: {
 		file = "../../data/abalone2.data";
-		predefined_clusters=28;
+		predefined_clusters = 28;
 
-		file = "../../data/abalone4.data";
-		predefined_clusters=3;
+//		file = "../../data/abalone4.data";
+//		predefined_clusters = 3;
 	}
 	break;
 	case D_IRIS:{
 		file = "../../data/iris2.data";
-		predefined_clusters=3;
+		predefined_clusters = 3;
+	}
+	break;
+	case D_GAUSSIAN: {
+		file = "../../data/gaussian.data";
+		predefined_clusters = 2;
 	}
 	break;
 	}
@@ -86,6 +96,8 @@ std::cout << std::endl;
 
 fuzzycmeans.evaluate();
 
+	long time = get_cur_1ms()-time_begin_ms;
+	std::cout << "Clustering took " << time << " ms" << std::endl;
 	stop = true;
 }
 
