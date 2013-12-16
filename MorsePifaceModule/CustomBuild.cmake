@@ -10,3 +10,5 @@
 #######################################################################################################################
 
 # Your own changes to the CMake build system such as for example FindEigen to support matrix manipulations
+
+SET(CMAKE_BUILD_TYPE, Debug)

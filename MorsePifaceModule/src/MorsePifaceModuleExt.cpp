@@ -17,6 +17,8 @@
 #include <pifacedigital.h>
 
 #include <iostream>				//std::cout
+#include <stdlib.h>				//atoi
+#include <string>
 #include <unistd.h>				//usleep, sleep
 
 using namespace rur;
@@ -24,7 +26,8 @@ using namespace rur;
 //! Replace with your own code
 MorsePifaceModuleExt::MorsePifaceModuleExt() {
 mMorseMessage.clear();
-mPause = 1000;
+mMorseMessage="0";
+mPause = 300*1000;
 
 hw_addr=0;
 pifacedigital_open(hw_addr);
@@ -38,30 +41,37 @@ pifacedigital_close(hw_addr);
 //! Replace with your own code
 void MorsePifaceModuleExt::Tick() {
 	const std::string* read = readMorse(false);
+	std::string buf;
 	if (read != NULL && !read->empty()) {
 		mMorseMessage = *read;
-		std::cout << "Incoming string received: " << mMorseMessage << std::endl;
-		//parse string
-		//blink those lights yo!!
+		std::cout << "New string received: " << mMorseMessage << std::endl;
 	}
-    // Write to output
-//	pifacedigital_write
-    pifacedigital_write_reg(0x00, OUTPUT, hw_addr);
-    sleep(1);
-    pifacedigital_write_reg(0xaa, OUTPUT, hw_addr);
-    sleep(1);
-    pifacedigital_write_reg(0x55, OUTPUT, hw_addr);
-    sleep(1);
-    pifacedigital_write_reg(0x00, OUTPUT, hw_addr);
-
-	usleep(10000);
+//	mMorseMessage = "10101011101110111010101";
+	//parse string && blink those lights yo!!
+	for(unsigned i=0;i<mMorseMessage.size();++i){
+		buf = mMorseMessage.at(i);
+		switchlight(buf=="1");
+		usleep(mPause);
+	}
+	sleep(1.5);
 }
 
 //! Replace with your own code
 bool MorsePifaceModuleExt::Stop() {
 	return false;
+//	return true;
 }
 
-bool MorsePifaceModuleExt::switchlight(bool on){
-	return true;
+void MorsePifaceModuleExt::switchlight(bool on){
+	if(on){
+		pifacedigital_write_bit(1,1,OUTPUT,hw_addr);
+	} else {
+		pifacedigital_write_bit(0,1,OUTPUT,hw_addr);
+	}
+}
+
+void MorsePifaceModuleExt::switchlight(int on){
+	if(on==0 || on==1){
+		pifacedigital_write_bit(on,1,OUTPUT,hw_addr);
+	}
 }

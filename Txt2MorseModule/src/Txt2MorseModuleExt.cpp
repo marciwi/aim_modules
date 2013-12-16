@@ -159,6 +159,7 @@ void Txt2MorseModuleExt::Tick() {
 		std::cout << "Received string to convert: " << copy << std::endl;
 		for(unsigned i=0;i<copy.size();++i){
 			buf = copy[i];
+			buf = tolower(buf);
 			morseMessage.append(convertSingleCharacter(buf));
 			morseMessage.append("000");
 		}

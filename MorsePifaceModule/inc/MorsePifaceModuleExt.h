@@ -14,6 +14,7 @@
  */
 
 #include <MorsePifaceModule.h>
+#include <string>
 
 namespace rur {
 
@@ -42,6 +43,7 @@ public:
 	bool Stop();
 
 	void switchlight(bool on);
+	void switchlight(int on);
 };
 
 }
