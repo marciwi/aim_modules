@@ -20,10 +20,7 @@
 ## What does it do?
 
 The MorsePifaceModule uses the morse signal that is output by the Txt2Morse Module and blinks lights to show this morse code. It requires a Raspberry Pi and PiFace shield to work.
-
-## How fast is it?
-
-The MorsePifaceModule ...
+Find out more about the PiFace at [their website](http://www.piface.org.uk/).
 
 ## How to install?
 
@@ -38,4 +35,6 @@ The copyrights of this module (2013) belong to:
 
 - Author: Marc Hulscher
 - DO bots
+
+
 

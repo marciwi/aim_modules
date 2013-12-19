@@ -19,11 +19,11 @@
 
 ## What does it do?
 
-The Morse2TxtModule ...
+The Morse2TxtModule converts a string of morse code to a string of readable text. This morse code string consists of zeroes and ones, where we define the 1 as a light on and 0 as light off.
 
 ## How fast is it?
 
-The Morse2TxtModule ...
+The Morse2TxtModule is pretty fast
 
 ## How to install?
 

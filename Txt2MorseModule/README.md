@@ -19,11 +19,7 @@
 
 ## What does it do?
 
-The Txt2MorseModule ...
-
-## How fast is it?
-
-The Txt2MorseModule ...
+The Txt2MorseModule converts a string of text to an equivalent string that can be read a morse code. This morse code string consists of zeroes and ones, where we define the 1 as a light on and 0 as light off.
 
 ## How to install?
 

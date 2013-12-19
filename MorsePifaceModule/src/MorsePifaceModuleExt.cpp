@@ -27,7 +27,7 @@ using namespace rur;
 MorsePifaceModuleExt::MorsePifaceModuleExt() {
 mMorseMessage.clear();
 mMorseMessage="0";
-mPause = 300*1000;
+mPause = 1000*1000;
 
 hw_addr=0;
 pifacedigital_open(hw_addr);
@@ -44,16 +44,16 @@ void MorsePifaceModuleExt::Tick() {
 	std::string buf;
 	if (read != NULL && !read->empty()) {
 		mMorseMessage = *read;
-		std::cout << "New string received: " << mMorseMessage << std::endl;
+		std::cout << "[MorsePifaceModule] New string received: " << mMorseMessage << std::endl;
 	}
-//	mMorseMessage = "10101011101110111010101";
+//	mMorseMessage = "101010111011101110101010";
 	//parse string && blink those lights yo!!
 	for(unsigned i=0;i<mMorseMessage.size();++i){
 		buf = mMorseMessage.at(i);
 		switchlight(buf=="1");
 		usleep(mPause);
 	}
-	sleep(1.5);
+	usleep(15*mPause);
 }
 
 //! Replace with your own code
