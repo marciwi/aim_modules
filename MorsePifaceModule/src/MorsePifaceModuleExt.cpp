@@ -65,8 +65,10 @@ bool MorsePifaceModuleExt::Stop() {
 void MorsePifaceModuleExt::switchlight(bool on){
 	if(on){
 		pifacedigital_write_bit(1,1,OUTPUT,hw_addr);
+		pifacedigital_write_bit(1,0,OUTPUT,hw_addr);
 	} else {
 		pifacedigital_write_bit(0,1,OUTPUT,hw_addr);
+		pifacedigital_write_bit(0,0,OUTPUT,hw_addr);
 	}
 }
 
