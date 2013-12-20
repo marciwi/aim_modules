@@ -24,7 +24,6 @@ MorsePifaceModule::MorsePifaceModule():
 {
   const char* const channel[1] = {"readMorse"};
   cliParam = new Param();
-  dummyMorse = std::string(0);
 }
 
 MorsePifaceModule::~MorsePifaceModule() {

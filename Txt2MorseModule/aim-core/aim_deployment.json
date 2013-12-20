@@ -14,13 +14,13 @@
 		{
 			"name":"txt",
 			"dir":"in",
-			"type":"std::string",
+			"type":"string",
 			"middleware":"default"
 		},
 		{
 			"name":"morse",
 			"dir":"out",
-			"type":"std::string",
+			"type":"string",
 			"middleware":"default"
 		}
 	]

@@ -227,8 +227,8 @@ char* ClusterModule::GetReply(zmq::socket_t *s, bool & state, bool blocking, int
 
 void ClusterModule::SendRequest(zmq::socket_t *s, bool & state, bool blocking, std::string str) {
   if (state) {
-    zmq::message_t request(str.size()+1);
-    memcpy((void *) request.data(), str.c_str(), str.size()+1);
+    zmq::message_t request(str.size());
+    memcpy((void *) request.data(), str.c_str(), str.size());
     if (debug) std::cout << "Send request: " << str << std::endl;
     if (blocking)
       state = s->send(request);
@@ -312,7 +312,7 @@ long_seq* ClusterModule::readAudio(bool blocking) {
   }
   SendAck(portAudioIn.sock, portAudioIn.ready);
   pthread_mutex_unlock(&cmdMutex);
-  if (reply_size < 2) std::cerr << "Error: Reply is not large enough to store a value!" << std::endl;
+  if (reply_size < 1) std::cerr << "Error: Reply is not large enough to store a value!" << std::endl;
   std::stringstream ss; ss.clear(); ss.str("");
   ss << std::string(reply);
   int itemVal;
@@ -345,7 +345,7 @@ int* ClusterModule::readInfrared(bool blocking) {
   }
   SendAck(portInfraredIn.sock, portInfraredIn.ready);
   pthread_mutex_unlock(&cmdMutex);
-  if (reply_size < 2) std::cerr << "Error: Reply is not large enough to store a value!" << std::endl;
+  if (reply_size < 1) std::cerr << "Error: Reply is not large enough to store a value!" << std::endl;
   std::stringstream ss; ss.clear(); ss.str("");
   ss << std::string(reply);
   ss >> portInfraredValue;
