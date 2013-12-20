@@ -53,7 +53,7 @@ void MorsePifaceModuleExt::Tick() {
 		switchlight(buf=="1");
 		usleep(mPause);
 	}
-	usleep(15*mPause);
+	usleep(8*mPause);
 }
 
 //! Replace with your own code
