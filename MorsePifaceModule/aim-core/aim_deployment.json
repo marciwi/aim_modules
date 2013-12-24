@@ -1,0 +1,22 @@
+{
+	"name":"MorsePifaceModule",
+	"type":"background",
+	"version":"1",
+	"category":"Home Automation",
+	"description":"Controls (christmas) lights using the PiFace addon for the raspberry pi",
+	"supported_middleware":[ "android", "yarp", "zeromq", "ros" ],
+	"supported_devices":[ "raspberrypi" ],
+	"enable":"true",
+	"android": {
+		"package":"org.dobots.morsepifacemodule",
+		"url":"https://play.google.com/store/apps/details?id=org.dobots.morsepifacemodule"
+	},
+	"ports": [
+		{
+			"name":"morse",
+			"dir":"in",
+			"type":"string",
+			"middleware":"default"
+		}
+	]
+}
