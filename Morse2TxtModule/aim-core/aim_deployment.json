@@ -1,6 +1,7 @@
 {
 	"name":"Morse2TxtModule",
 	"type":"background",
+	"version":"1",
 	"category":"Miscellaneous",
 	"description":"Converts morse code to a string of text",
 	"supported_middleware":[ "android", "yarp", "zeromq", "ros" ],
@@ -14,13 +15,13 @@
 		{
 			"name":"txt",
 			"dir":"out",
-			"type":"std::string",
+			"type":"string",
 			"middleware":"default"
 		},
 		{
 			"name":"morse",
 			"dir":"in",
-			"type":"std::string",
+			"type":"string",
 			"middleware":"default"
 		}
 	]

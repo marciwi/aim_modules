@@ -1,6 +1,7 @@
 {
 	"name":"Txt2MorseModule",
 	"type":"background",
+	"version":"1",
 	"category":"Miscellaneous",
 	"description":"Converts a string to Morse code",
 	"supported_middleware":[ "android", "yarp", "zeromq", "ros" ],

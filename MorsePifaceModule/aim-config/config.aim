@@ -1,11 +1,11 @@
 # Use format xxx=xxx for configuration options
-version=0.2
+version=1
 build_folder=builds
 
 # Brief description for e.g. on the website
 description='Controls (christmas) lights using the PiFace addon for the raspberry pi'
 category='Home Automation'
-enable='false'
+enable='true'
 
 # The application types that are possible: UI, background
 application_type=background
