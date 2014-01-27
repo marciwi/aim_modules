@@ -1,0 +1,32 @@
+{
+	"name":"ClusterModule",
+	"type":"background",
+	"description":"Performs amazing functions",
+	"supported_middleware":[ ],
+	"supported_devices":[ ],
+	"enable":"false",
+	"android": {
+		"package":"org.dobots.clustermodule",
+		"url":"https://play.google.com/store/apps/details?id=org.dobots.clustermodule"
+	},
+	"ports": [
+		{
+			"name":"audio",
+			"dir":"in",
+			"type":"intarray",
+			"middleware":"default"
+		},
+		{
+			"name":"infrared",
+			"dir":"in",
+			"type":"int",
+			"middleware":"default"
+		},
+		{
+			"name":"leftwheel",
+			"dir":"out",
+			"type":"int",
+			"middleware":"default"
+		}
+	]
+}

@@ -1,0 +1,53 @@
+/**
+ * IDL description of the DoorManModule
+ *
+ * This file is automatically parsed by the rurbuilder backends for the omniidl compiler. The names of the functions
+ * will become port identifiers. The names of the function variables are not used. 
+ *
+ * The syntax of the IDL file also allows for "inout", but not all middlewares will accept this yet.
+ */
+
+#pragma author               Marc Hulscher
+#pragma copyright            DO bots
+#pragma date                 jan 27, 2014
+#pragma license              Apache Licence
+
+// Recommended namespace "rur"
+module rur {
+
+// The command-line parameter (this struct is required)
+struct Param {
+  // multiple modules can be addressed in parallel, killed, etc. using "module_id"
+  string module_id;
+  // a certain parameter over the command-line (long becomes int) 
+  long parameter;
+};
+
+// Typedef for array of integers
+typedef sequence<long> long_seq;
+
+// Typedef for a string of characters
+typedef sequence<char> char_seq;
+
+// The public interface of DoorManModule
+interface DoorManModule {
+
+  // Input from microphone in the form of an array (just an example)
+  //void Audio(in long_seq input);
+
+  // Input from infrared sensor (just an example)
+  //void Infrared(in long input);
+
+  // A command to one of the wheels (just an example)
+  //void LeftWheel(out long output);
+
+  // An input that wants to open or close the door
+  void opendoor(in char_seq input);
+
+  // An output to a 433 speaking module
+  void send433(out char_seq output);
+};
+
+
+
+};
