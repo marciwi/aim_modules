@@ -26,9 +26,6 @@ struct Param {
 // Typedef for array of integers
 typedef sequence<long> long_seq;
 
-// Typedef for a string of characters
-typedef sequence<char> char_seq;
-
 // The public interface of DoorManModule
 interface DoorManModule {
 
@@ -41,11 +38,11 @@ interface DoorManModule {
   // A command to one of the wheels (just an example)
   //void LeftWheel(out long output);
 
-  // An input that wants to open or close the door
-  void opendoor(in char_seq input);
+  // An input integer that describes activity on the camera
+  void opendoor(in long input);
 
   // An output to a 433 speaking module
-  void send433(out char_seq output);
+  //void send433(out string output);
 };
 
 

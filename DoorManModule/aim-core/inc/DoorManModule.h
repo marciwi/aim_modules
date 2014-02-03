@@ -32,16 +32,14 @@ struct Param {
 
 typedef std::vector<int> long_seq;
 
-typedef std::vector<unsigned char> char_seq;
-
 class DoorManModule {
 private:
   Param *cliParam;
   
-  char_seq dummyopendoor;
+  int dummyopendoor;
 protected:
-  static const int channel_count = 2;
-  const char* channel[2];
+  static const int channel_count = 1;
+  const char* channel[1];
 public:
   // Default constructor
   DoorManModule();
@@ -62,11 +60,8 @@ public:
   bool Stop() { return false; }
   
   // Read from this function and assume it means something
-  // Remark: caller is responsible for evoking vector->clear()
-  char_seq *readopendoor(bool blocking=false);
-  
-  // Write to this function and assume it ends up at some receiving module
-  bool writesend433(const char_seq &output);
+  // Remark: check if result is not NULL
+  int *readopendoor(bool blocking=false);
   
 };
 } // End of namespace

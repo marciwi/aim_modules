@@ -15,18 +15,31 @@
 
 #include <DoorManModule.h>
 
+#include <time.h>       /* time_t, struct tm, difftime, time, mktime */
+
 namespace rur {
 
 /**
  * Your Description of this module.
  */
 class DoorManModuleExt: public DoorManModule {
+	std::string opencommand;
+	std::string closecommand;
+	std::string fileopen;
+	std::string fileclose;
+	std::string outputfile;
+	int threshold;
+	double waitPeriod;
+	time_t lastAction;
 public:
 	//! The constructor
 	DoorManModuleExt();
 
 	//! The destructor
 	virtual ~DoorManModuleExt();
+
+	void openDoor();
+	void closeDoor();
 
 	//! The tick function is the "heart" of your module, it reads and writes to the ports
 	void Tick();

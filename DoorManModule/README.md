@@ -27,8 +27,6 @@ The DoorManModule ...
 
 ## How to install?
 
-First install [WiringPi](http://wiringpi.com/download-and-install/)
-
 Follow the instructions on [AIM website](http://dobots.github.com/aim/). 
 
 ## Where can I read more?

@@ -14,13 +14,27 @@
  */
 
 #include <DoorManModuleExt.h>
-#include "RCSwitch.h"
+#include <ctime>
+#include "execute_command.hpp"
+#include <iostream>
+#include <unistd.h>				/* usleep */
+#include <string>
+#include <time.h>       /* time_t, struct tm, difftime, time, mktime */
 
 using namespace rur;
 
 //! Replace with your own code
 DoorManModuleExt::DoorManModuleExt() {
-
+	std::string prefix = "sudo  /home/pi/ardushield/rftransmit.o -c ";
+	std::string suffix= " -a 9.135.101.67.33.0.0.0";
+	opencommand = prefix + "34" + suffix;
+	closecommand = prefix + "51" + suffix;
+	fileopen = "/home/pi/open.txt";
+	fileclose = "/home/pi/close.txt";
+	outputfile = "/home/pi/doorData.txt";
+	threshold = 25;
+	waitPeriod = 5;
+	time(&lastAction);
 }
 
 //! Replace with your own code
@@ -28,9 +42,38 @@ DoorManModuleExt::~DoorManModuleExt() {
 
 }
 
-//! Replace with your own code
-void DoorManModuleExt::Tick() {
+void DoorManModuleExt::openDoor(){
+	execute_command(opencommand);
+	createFile(outputfile,"1");
+}
+void DoorManModuleExt::closeDoor(){
+	execute_command(closecommand);
+	createFile(outputfile,"0");
+}
 
+void DoorManModuleExt::Tick() {
+	int *read = readopendoor();
+	if (read != NULL) {
+		int copy = *read;
+		if(copy>threshold){
+			openDoor();
+			time(&lastAction);
+		} else if(copy<=threshold && difftime(time(NULL),lastAction)>waitPeriod){
+			closeDoor();
+			time(&lastAction);
+		}
+	}
+
+	// check output from EVE
+	if(fileExists(fileopen)){
+		openDoor();
+		deleteFile(fileopen);
+	} else if(fileExists(fileclose)){
+		closeDoor();
+		deleteFile(fileclose);
+	}
+	createFile(outputfile,"1");
+	usleep(10000);
 }
 
 //! Replace with your own code

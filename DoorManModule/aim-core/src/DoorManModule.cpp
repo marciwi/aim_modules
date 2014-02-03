@@ -22,9 +22,9 @@ namespace rur {
 DoorManModule::DoorManModule():
   cliParam(0)
 {
-  const char* const channel[2] = {"readopendoor", "writesend433"};
+  const char* const channel[1] = {"readopendoor"};
   cliParam = new Param();
-  dummyopendoor = char_seq(0);
+  dummyopendoor = int(0);
 }
 
 DoorManModule::~DoorManModule() {
@@ -36,12 +36,8 @@ void DoorManModule::Init(std::string & name) {
   
 }
 
-char_seq* DoorManModule::readopendoor(bool blocking) {
+int* DoorManModule::readopendoor(bool blocking) {
   return &dummyopendoor;
-}
-
-bool DoorManModule::writesend433(const char_seq &output) {
-  return true;
 }
 
 } // namespace
