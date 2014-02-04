@@ -25,7 +25,7 @@ using namespace rur;
 
 //! Replace with your own code
 DoorManModuleExt::DoorManModuleExt() {
-	std::string prefix = "sudo  /home/pi/ardushield/rftransmit.o -c ";
+	std::string prefix = "sudo /home/pi/ardushield/rftransmit.o -c ";
 	std::string suffix= " -a 9.135.101.67.33.0.0.0";
 	opencommand = prefix + "34" + suffix;
 	closecommand = prefix + "51" + suffix;
@@ -37,7 +37,6 @@ DoorManModuleExt::DoorManModuleExt() {
 	time(&lastAction);
 }
 
-//! Replace with your own code
 DoorManModuleExt::~DoorManModuleExt() {
 
 }
@@ -62,6 +61,7 @@ void DoorManModuleExt::Tick() {
 			closeDoor();
 			time(&lastAction);
 		}
+		std::cout << "Received value: " << copy << std::endl;
 	}
 
 	// check output from EVE
