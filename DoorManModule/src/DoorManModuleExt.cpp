@@ -42,10 +42,12 @@ DoorManModuleExt::~DoorManModuleExt() {
 }
 
 void DoorManModuleExt::openDoor(){
+	std::cout << "opening door" << std::endl;
 	execute_command(opencommand);
 	createFile(outputfile,"1");
 }
 void DoorManModuleExt::closeDoor(){
+	std::cout << "closing door" << std::endl;
 	execute_command(closecommand);
 	createFile(outputfile,"0");
 }
